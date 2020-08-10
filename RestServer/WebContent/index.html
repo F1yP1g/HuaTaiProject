@@ -1,0 +1,27 @@
+    <!doctype html>
+    <html lang="zh-CN">
+    <head>
+        <title>RestServer</title>
+    </head>
+    <body>
+    
+    <h1>RestServer Monitor</h1>
+    <p>------------------------------------------------</p>
+    <div id="info"></div>
+
+    </body>
+    <script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+            var getting = {
+            type: "POST",
+            async:false,
+            url:"http://localhost:8080/restServer/rest/monitor",
+            datatype:"text",
+            success:function(res) {
+            	document.getElementById("info").innerHTML = res;
+    		}
+    	};
+    //定时访问服务端，不断获取数据 ，5秒请求一次。
+   window.setInterval(function(){$.ajax(getting)},5000);
+    </script>
+    </html>
